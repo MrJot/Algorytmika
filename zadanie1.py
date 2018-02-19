@@ -1,23 +1,21 @@
-import math
-import numpy as np
-print("Program rozwiazujacy uklad rownan w postaci:\nAx + By = C\nDx + Ey = F")
-A=float(input("Podaj A= "))
-B=float(input("Podaj B= "))
-C=float(input("Podaj C= "))
-D=float(input("Podaj D= "))
-E=float(input("Podaj E= "))
-F=float(input("Podaj F= "))
+num = 1634
 
-a = np.array([[A, B],[D,E]])
-a_uzup=np.array([[A,B,C],[D,E,F]])
-print(np.linalg.matrix_rank(a))
-print(np.linalg.matrix_rank(a_uzup))
-b = np.array([C, F])
-if np.linalg.matrix_rank(a)==np.linalg.matrix_rank(a_uzup)==2:
-    print("Równanie ma jedno rozwiązanie")
-    sol=(np.linalg.solve(a,b))
-    print('x = %5.2f , y = %5.2f' % (sol[0], sol[1]))
-elif np.linalg.matrix_rank(a)==np.linalg.matrix_rank(a_uzup)<2:
-    print("Układ ma nieskończenie wiele rozwiązań")
+# Changed num variable to string, 
+# and calculated the length (number of digits)
+order = len(str(num))
+
+# initialize sum
+sum = 0
+
+# find the sum of the cube of each digit
+temp = num
+while temp > 0:
+   digit = temp % 10
+   sum += digit ** order
+   temp //= 10
+
+# display the result
+if num == sum:
+   print(num,"is an Armstrong number")
 else:
-    print("Układ równań jest układem sprzecznym")
+   print(num,"is not an Armstrong number")
